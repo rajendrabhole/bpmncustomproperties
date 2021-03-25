@@ -11,10 +11,10 @@ export default function(group, element, translate, dropdownOptions) {
   if (is(element, 'bpmn:StartEvent')) {
     var bo = getBusinessObject(element);
     group.entries.push(entryFactory.selectBox(translate, {
-      id: 'Connector_Name',
+      id: 'input',
       label: 'Connector Name',
       selectOptions: dropdownOptions,
-      modelProperty: 'String',
+      modelProperty: 'input',
       emptyParameter: false,
 
       get: function(element, node) {
@@ -22,7 +22,8 @@ export default function(group, element, translate, dropdownOptions) {
       },
 
       set: function(element, values, node) {
-        var bo = cmdHelper.updateBusinessObject(element, node, values);
+        var bobj = getBusinessObject(element);
+        var bo = cmdHelper.updateBusinessObject(element, bobj, values);
         return bo;
       },
     }));
