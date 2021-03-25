@@ -1,7 +1,7 @@
 {
-  "name": "Magic",
-  "prefix": "magic",
-  "uri": "http://magic",
+  "name": "Input",
+  "prefix": "Input",
+  "uri": "http://Input",
   "xml": {
     "tagAlias": "lowerCase"
   },
@@ -14,9 +14,15 @@
       ],
       "properties": [
         {
-          "name": "spell",
+          "name": "input",
           "isAttr": true,
-          "type": "String"
+          "type"  : "array"
+        },
+        {
+          "name": "output",
+          "isAttr": true,
+          "isMany": true,
+          "type"  : "array"
         },
       ]
     },
