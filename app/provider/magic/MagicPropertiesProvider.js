@@ -1,8 +1,6 @@
 import inherits from 'inherits';
 
 import PropertiesActivator from 'bpmn-js-properties-panel/lib/PropertiesActivator';
-import PropertiesPanel from 'bpmn-js-properties-panel/lib/PropertiesPanel';
-
 
 // Require all properties you need from existing providers.
 // In this case all available bpmn relevant properties without camunda extensions.
@@ -17,6 +15,7 @@ import nameProps from 'bpmn-js-properties-panel/lib/provider/bpmn/parts/NameProp
 import textBoxProps from './parts/TextBoxProps';
 //import spellProps from './parts/SpellProps';
 import dropdownProps from './parts/DropdownProps';
+import tableProps from './parts/TableProps';
 var dropdownJson = [ { value: 1, name: 'Xyz' }, { value: 2, name: 'Xyz1'}, { value: 3, name: 'Xyz2' }, { value: 4, name: 'Xyz3' }];
 
 // The general tab contains all bpmn relevant properties.
@@ -47,38 +46,38 @@ function createGeneralTabGroups(element, bpmnFactory, canvas, elementRegistry, t
 }
 
 // Create the custom magic tab
-function createMagicTabGroups(element, translate) {
+function createOutputTabGroups(element, translate) {
 
   // Create a group called "Black Magic".
-  var blackMagicGroup = {
+  var outputGroup = {
     id: 'Output',
     label: 'Output',
     entries: []
   };
 
   // Add the spell props to the black magic group.
-  textBoxProps(blackMagicGroup, element, translate, 'InputParameter');
+  tableProps(outputGroup, element, translate, 'OutputParameter');
 
   return [
-    blackMagicGroup
+    outputGroup
   ];
 }
 
 // Create the custom magic tab
-function createNoMagicTabGroups(element, translate) {
+function createInputTabGroups(element, translate) {
 
   // Create a group called "Black Magic".
-  var blackNoMagicGroup = {
+  var inputGroup = {
     id: 'Input',
     label: 'Input',
     entries: []
   };
 
 
-  dropdownProps(blackNoMagicGroup, element, translate, dropdownJson);
+  dropdownProps(inputGroup, element, translate, dropdownJson);
 
   return [
-    blackNoMagicGroup
+    inputGroup
   ];
 }
 
@@ -97,22 +96,22 @@ export default function MagicPropertiesProvider(
     };
 
     // The "magic" tab
-    var magicTab = {
-      id: 'Input',
+    var inputTab = {
+      id: 'input',
       label: 'Input',
-      groups: createNoMagicTabGroups(element, translate)
+      groups: createInputTabGroups(element, translate)
     };
 
-    var noMagicTab = {
+    var outputTab = {
       id: 'Output',
       label: 'Output',
-      groups: createMagicTabGroups(element, translate)
+      groups: createOutputTabGroups(element, translate)
     };
 
     return [
       generalTab,
-      magicTab,
-      noMagicTab
+      inputTab,
+      outputTab
       ];
   };
 
@@ -126,11 +125,6 @@ export default function MagicPropertiesProvider(
             return false;
         }
       });
-
-      // PropertiesPanel.prototype.updateState = function(entry, entryNode) {
-      //   this.updateShow(entry, entryNode);
-      //   this.updateDisable(entry, entryNode);
-      // };
 }
 
 inherits(MagicPropertiesProvider, PropertiesActivator);
