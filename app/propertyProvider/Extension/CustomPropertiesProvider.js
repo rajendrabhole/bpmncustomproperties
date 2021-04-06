@@ -17,7 +17,7 @@ import inputSocketProps from './parts/InputProps';
 import outputProps from './parts/OutputProps';
 var dropdownJson = [ { value: 0, name: 'Select' }, {value: 1, name: 'Xyz' }, { value: 2, name: 'Xyz1'}, { value: 3, name: 'Xyz2' }, { value: 4, name: 'Xyz3' }];
 var dropdownJson1 = [ { value: 0, name: 'Select' }, { value: 1, name: 'Abc' }, { value: 2, name: 'Abc1'}, { value: 3, name: 'Abc2' }, { value: 4, name: 'Abc3' }];
-var outputJson = [ {Name: 'login',Value: 'johnAppleseed'}, {Name: 'password', Value: 'WelcomePassword'}];
+var outputJson = [ {Name: 'login',Value: 'johnAppleseed'}, {Name: 'password', Value: 'Welcome$123'}];
 
 // The general tab contains all bpmn relevant properties.
 // The properties are organized in groups.
