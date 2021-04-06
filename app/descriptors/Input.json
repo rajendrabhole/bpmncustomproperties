@@ -1,0 +1,31 @@
+{
+  "name": "Input",
+  "prefix": "Input",
+  "uri": "http://Input",
+  "xml": {
+    "tagAlias": "lowerCase"
+  },
+  "associations": [],
+  "types": [
+    {
+      "name": "BewitchedStartEvent",
+      "extends": [
+        "bpmn:StartEvent"
+      ],
+      "properties": [
+        {
+          "name": "Input",
+          "isAttr": true,
+          "type"  : "array",
+          "default": "Select Value"
+        },
+        {
+          "name": "output",
+          "isAttr": true,
+          "isMany": true,
+          "type"  : "array"
+        },
+      ]
+    },
+  ]
+}
