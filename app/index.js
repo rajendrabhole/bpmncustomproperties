@@ -2,8 +2,8 @@ import $ from 'jquery';
 import BpmnModeler from 'bpmn-js/lib/Modeler';
 
 import propertiesPanelModule from 'bpmn-js-properties-panel';
-import propertiesProviderModule from './provider/magic';
-import magicModdleDescriptor from './descriptors/Input';
+import propertiesProviderModule from './propertyProvider/Extension';
+import magicModdleDescriptor from './descriptors/input';
 
 import {
   debounce
